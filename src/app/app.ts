@@ -1,12 +1,14 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { Mutant } from './mutant/mutant';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [Mutant],
+  template: `
+    <div>
+      <app-mutant></app-mutant>
+    </div>
+  `,
 })
-export class App {
-  protected readonly title = signal('mutant-detector');
-}
+export class App {}

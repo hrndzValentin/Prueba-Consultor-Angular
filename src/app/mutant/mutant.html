@@ -1,0 +1,24 @@
+<div style="padding: 20px; max-width: 500px; margin: auto;">
+  <h2>Detector de Mutantes 🧬</h2>
+
+  <textarea
+    rows="8"
+    style="width: 100%;"
+    [(ngModel)]="dnaInput"
+    placeholder="Ejemplo:
+ATGCGA
+CAGTGC
+TTATGT
+AGAAGG
+CCCCTA
+TCACTG">
+  </textarea>
+
+  <br><br>
+  <p>TEST</p>
+  <button (click)="checkMutant()">
+    Analizar ADN
+  </button>
+
+  <h3>{{ result }}</h3>
+</div>
