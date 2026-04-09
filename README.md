@@ -1,59 +1,111 @@
-# MutantDetector
+# 🧬 Detector de Mutantes - Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
+## 📌 Descripción
 
-## Development server
+Aplicación web desarrollada en Angular que permite analizar una secuencia de ADN para determinar si pertenece a un mutante o a un humano.
 
-To start a local development server, run:
+El sistema evalúa una matriz NxN de caracteres que representan bases nitrogenadas (A, T, C, G) y detecta patrones repetidos en diferentes direcciones.
 
-```bash
+---
+
+## ⚙️ ¿Cómo funciona?
+
+El usuario ingresa una secuencia de ADN en formato de texto, donde cada línea representa una fila de la matriz.
+
+Ejemplo:
+
+```
+ATGCGA
+CAGTGC
+TTATGT
+AGAAGG
+CCCCTA
+TCACTG
+```
+
+El sistema analiza la matriz buscando secuencias de **cuatro caracteres iguales consecutivos** en las siguientes direcciones:
+
+* Horizontal →
+* Vertical ↓
+* Diagonal principal ↘
+* Diagonal inversa ↙
+
+Si se encuentran **más de una secuencia válida**, el ADN se clasifica como mutante.
+
+---
+
+## 🧠 Algoritmo
+
+El algoritmo implementado:
+
+* Evalúa 4 direcciones por cada posición
+* Valida previamente límites para evitar iteraciones innecesarias
+* Aplica *early exit* (terminación temprana) cuando se detectan más de una secuencia
+
+### ✔ Optimizaciones clave
+
+* Evita recorrer posiciones fuera de rango
+* Reduce comparaciones innecesarias
+* Corta ejecución cuando ya se cumple la condición de mutante
+
+---
+
+## ✅ Validaciones implementadas
+
+Antes de ejecutar el análisis, el sistema valida:
+
+1. **Formato NxN**: todas las filas deben tener la misma longitud
+2. **Caracteres válidos**: solo se permiten A, T, C, G
+3. **Filas vacías**: se eliminan automáticamente entradas inválidas
+
+---
+
+## 🎨 Interfaz de usuario
+
+La aplicación cuenta con una interfaz simple y funcional que permite:
+
+* Ingresar el ADN en un área de texto
+* Ejecutar el análisis con un botón
+* Visualizar el resultado de forma clara e inmediata
+* Feedback visual diferenciado para mutante y humano
+
+---
+
+## 🚀 Ejecución del proyecto
+
+### 1. Instalar dependencias
+
+```
+npm install
+```
+
+### 2. Ejecutar aplicación
+
+```
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 3. Acceder en el navegador
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
-```
+## 🧩 Tecnologías utilizadas
 
-## Building
+* Angular (Standalone Components)
+* TypeScript
+* HTML / CSS
 
-To build the project run:
+---
 
-```bash
-ng build
-```
+## 📌 Notas finales
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+El enfoque de la solución prioriza:
 
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+* Claridad del código
+* Eficiencia del algoritmo
+* Buenas prácticas en validación
+* Experiencia de usuario simple y efectiva
