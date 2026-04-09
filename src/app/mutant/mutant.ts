@@ -35,7 +35,7 @@ export class Mutant {
       return;
     }
 
-    this.result = this.isMutant(dna) ? '🧬 Es mutante' : '👤 No es mutante';
+    this.result = this.isMutant(dna) ? '🧬 Mutante detectado' : '👤 Humano normal';
   }
 
   isMutant(dna: string[]): boolean {
